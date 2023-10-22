@@ -200,6 +200,22 @@ function timeGame() {
     }
 }
 
+/** 
+ *  Gives different time limits depending on the difficulty selected
+ */
+function difficulty() {
+    if (selectDifficulty.value === 'easy') {
+        time = 100;
+        timeCount.textContent = '100';
+    } else if (selectDifficulty.value === 'medium') {
+        time = 60;
+        timeCount.textContent = '60';
+    } else {
+        time = 30;
+        timeCount.textContent = '30';
+    }
+}
+
 /**
  * Checks, each second, if the timer has reached zero. If so it will 
  * display a end game page
