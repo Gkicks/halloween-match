@@ -1,197 +1,197 @@
-    google fonts @import url('https://fonts.googleapis.com/css2?family=Laila&family=Playfair+Display&display=swap');
+google fonts @import url('https://fonts.googleapis.com/css2?family=Laila&family=Playfair+Display&display=swap');
 
-    /* universal selectors */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+/* universal selectors */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #5e32ba;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    position: relative;
+    font-family: 'playfair display', cursive;
+}
+
+/* main page */
+#title {
+    font-family: 'laila', sans-serif;
+    font-size: 5em;
+    color: black;
+    text-align: center;
+}
+
+/* card playing area */
+#game-container-outer {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 50vh;
+    width: 50vh;
+    background: #eb6123;
+    border-radius: 25px;
+    margin: 2vh auto;
+}
+
+#game-container {
+    display: grid;
+    grid-template-columns: repeat(4, 10vh);
+    grid-template-rows: repeat(4, 10vh);
+    grid-gap: 2vh;
+    margin-top: 2vh;
+    perspective: 600px;
+}
+
+.card {
+    border: 2px solid #18181a;
+    border-radius: 10px;
+    position: relative;
+    background: #96c457;
+    color: #18181a;
+    font-size: 6vh;
+    padding: 25% 0;
+    transition: transform 0.5s ease-in-out;
+    transform-style: preserve-3d;
+}
+
+.cardBack,
+.cardFront {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+    /* To disable click on the child div and image of card div */
+    pointer-events: none;
+}
+
+.cardBack {
+    background: #96c457;
+    backface-visibility: hidden;
+    text-align: center;
+}
+
+.cardFront {
+    background: white;
+    opacity: 1;
+}
+
+.toggleCard {
+    transform: rotateY(180deg);
+    animation: font-fade 1s forwards;
+}
+
+@keyframes font-fade {
+    25% {
+        color: rgb(77, 59, 50, 0.1);
     }
 
-    body {
-        background: #5e32ba;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: start;
-        position: relative;
-        font-family: 'playfair display', cursive;
+    100% {
+        color: rgb(77, 59, 50, 0);
+    }
+}
+
+.flipCard {
+    pointer-events: none;
+}
+
+/* animation so the card images wiggle when the user has matched them all */
+.won-game-cards {
+    animation: wiggle 1s infinite;
+}
+
+@keyframes wiggle {
+    0% {
+        transform: rotate(0deg);
     }
 
-    /* main page */
+    25% {
+        transform: rotate(20deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    75% {
+        transform: rotate(-20deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/* media queries */
+
+/* for screens less than 840px */
+@media (max-width: 840px) {
+
     #title {
-        font-family: 'laila', sans-serif;
-        font-size: 6em;
-        color: black;
-        text-align: center;
+        font-size: 4em;
+    }
+}
+
+/* for screens less than 600px */
+@media (max-width: 600px) {
+
+    #title {
+        font-size: 3em;
     }
 
-    /* card playing area */
     #game-container-outer {
-        display: flex;
-        justify-content: center;
-        text-align: center;
-        height: 50vh;
-        width: 50vh;
-        background: #eb6123;
-        border-radius: 25px;
-        margin: 2vh auto;
+        height: 39.5vh;
+        width: 39.5vh;
     }
 
     #game-container {
-        display: grid;
-        grid-template-columns: repeat(4, 10vh);
-        grid-template-rows: repeat(4, 10vh);
-        grid-gap: 2vh;
-        margin-top: 2vh;
-        perspective: 600px;
+        grid-template-columns: repeat(4, 8vh);
+        grid-template-rows: repeat(4, 8vh);
+        grid-gap: 1.5vh;
+        margin: 1.5vh;
     }
 
     .card {
-        border: 2px solid #18181a;
-        border-radius: 10px;
-        position: relative;
-        background: #96c457;
-        color: #18181a;
         font-size: 6vh;
-        padding: 25% 0;
-        transition: transform 0.5s ease-in-out;
-        transform-style: preserve-3d;
     }
 
-    .cardBack,
-    .cardFront {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        top: 0;
-        left: 0;
-        border-radius: 10px;
-        /* To disable click on the child div and image of card div */
-        pointer-events: none;
+}
+
+/* for screens less than 355px */
+@media (max-width: 355px) {
+
+    #title {
+        font-size: 2em;
     }
 
-    .cardBack {
-        background: #96c457;
-        backface-visibility: hidden;
-        text-align: center;
+    #game-container-outer {
+        height: 29vh;
+        width: 29vh;
     }
 
-    .cardFront {
-        background: white;
-        opacity: 1;
+    #game-container {
+        grid-template-columns: repeat(4, 6vh);
+        grid-template-rows: repeat(4, 6vh);
+        grid-gap: 1vh;
+        margin: 1vh;
     }
 
-    .toggleCard {
-        transform: rotateY(180deg);
-        animation: font-fade 1s forwards;
+    .card {
+        font-size: 4vh;
     }
+}
 
-    @keyframes font-fade {
-        25% {
-            color: rgb(77, 59, 50, 0.1);
-        }
+#time-div {
+    text-align: center;
+    margin: 1vh 5vw;
+}
 
-        100% {
-            color: rgb(77, 59, 50, 0);
-        }
-    }
-
-    .flipCard {
-        pointer-events: none;
-    }
-
-    /* animation so the card images wiggle when the user has matched them all */
-    .won-game-cards {
-        animation: wiggle 1s infinite;
-    }
-
-    @keyframes wiggle {
-        0% {
-            transform: rotate(0deg);
-        }
-
-        25% {
-            transform: rotate(20deg);
-        }
-
-        50% {
-            transform: rotate(0deg);
-        }
-
-        75% {
-            transform: rotate(-20deg);
-        }
-
-        100% {
-            transform: rotate(0deg);
-        }
-    }
-
-    /* media queries */
-
-    /* for screens less than 840px */
-    @media (max-width: 840px) {
-
-        #title {
-            font-size: 4em;
-        }
-    }
-
-    /* for screens less than 600px */
-    @media (max-width: 600px) {
-
-        #title {
-            font-size: 3em;
-        }
-
-        #game-container-outer {
-            height: 39.5vh;
-            width: 39.5vh;
-        }
-
-        #game-container {
-            grid-template-columns: repeat(4, 8vh);
-            grid-template-rows: repeat(4, 8vh);
-            grid-gap: 1.5vh;
-            margin: 1.5vh;
-        }
-
-        .card {
-            font-size: 6vh;
-        }
-
-    }
-
-    /* for screens less than 355px */
-    @media (max-width: 355px) {
-
-        #title {
-            font-size: 2em;
-        }
-
-        #game-container-outer {
-            height: 29vh;
-            width: 29vh;
-        }
-
-        #game-container {
-            grid-template-columns: repeat(4, 6vh);
-            grid-template-rows: repeat(4, 6vh);
-            grid-gap: 1vh;
-            margin: 1vh;
-        }
-
-        .card {
-            font-size: 4vh;
-        }
-    }
-
-    #time-div {
-        text-align: center;
-        margin: 2vh 5vw;
-    }
-
-    #time-div h2 {
-        font-size: 4em;
-        color: #18181a;
-    }
+#time-div h2 {
+    font-size: 4em;
+    color: #18181a;
+}
